@@ -1,0 +1,6 @@
+.main-footer {      /* Configuração da classe main-footer para não ter problemas de visualização*/
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
