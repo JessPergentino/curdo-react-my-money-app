@@ -10,8 +10,9 @@ import promise from 'redux-promise' // middleware utilizado para parar o ciclo r
 
 import reducers from './main/reducers' //import do agrupamento de reducers
 
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() //Configuração para utilizar o redux devtools no browser
 
-const store = applyMiddleware(promise)(createStore)(reducers) // definir a store passando os reducers
+const store = applyMiddleware(promise)(createStore)(reducers, devTools) // definir a store passando os reducers
 ReactDOM.render(
     <Provider store={store}>{/* envolver a aplicação na tag provider para integra-la com o redux, passando o estado unico da aplicação(store) */}
         <App />

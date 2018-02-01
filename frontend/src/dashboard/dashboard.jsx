@@ -16,7 +16,7 @@ class Dashboard extends Component {
     
     //Essa função é chamada sempre que o componenete é renderizado
     componentWillMount(){
-        this.props.getSummary() //chama o metodo getSummary
+        this.props.getSummary() //chama a action getSummary
     }
 
     render() {
