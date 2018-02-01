@@ -7,10 +7,15 @@ import {connect} from 'react-redux'
 
 import {selectTab} from './tabActions' // import da ação
 
+import If from '../operador/if'
+
 class TabHeader extends Component {
     render() {
+        
         const selected = this.props.tab.selected === this.props.target // selected é um boolean que verifica se dentro do estado tab o atributo selected é igual ao target - se for igual quer dizer que essa aba foi selecionada
+        const visible = this.props.tab.visible[this.props.target] // se o atributo de visible tiver um nome igual ao do target ele marca como visivel 
         return (
+            <If test={visible}>{/*Faz o teste se é visivel*/}
             <li className={selected ? 'active' : ''} >{/*ClassName condicional para saber se a constante selected é verdadeira, se for a aba terá a aparencia de ativada, se não o className será vazio*/}
                 <a href='javascript:;' 
                     data-toggle='tab'
@@ -19,6 +24,7 @@ class TabHeader extends Component {
                     <i className={`fa fa-${this.props.icon}`}></i> {this.props.label}
                     </a>
             </li>
+        </If>
         )
     }
 }
