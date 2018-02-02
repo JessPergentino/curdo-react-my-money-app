@@ -17,6 +17,7 @@ import ContentHeader from '../common/template/contentHeader'
 import Content from '../common/template/content'
 
 import List from './billingCycleList'
+import Form from './billingCycleForm'
 
 class BillingCycle extends Component {
    
@@ -41,7 +42,9 @@ class BillingCycle extends Component {
                         <TabContent id='tabList'>
                             <List/>
                         </TabContent>
-                        <TabContent id='tabCreate'><h1>Incluir</h1></TabContent>
+                        <TabContent id='tabCreate'>
+                            <Form/>
+                        </TabContent>
                         <TabContent id='tabUpdate'><h1>Alterar</h1></TabContent>
                         <TabContent id='tabDelete'><h1>Excluir</h1></TabContent>
                     </TabsContent>
