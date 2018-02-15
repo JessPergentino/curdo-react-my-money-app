@@ -5,7 +5,7 @@ const _ = require('lodash')
 module.exports = (req, res, next) => {
     const bundle = res.locals.bundle // É onde esta a lista de erros
 
-    if(bundle.erros) {
+    if(bundle.errors) {
         const errors = parseErrors(bundle.errors) //função q irá fazer o tratamento do erro e o resultado será passado para o array errors
         res.status(500).json({errors})
     } else {
