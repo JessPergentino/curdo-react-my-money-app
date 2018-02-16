@@ -13,7 +13,7 @@ import TabContent from '../common/tab/tabContent'
 
 import {selectTab, showTabs} from '../common/tab/tabActions'
 
-import {create} from './billingCycleActions'
+import {create, update, remove} from './billingCycleActions'
 
 import ContentHeader from '../common/template/contentHeader'
 import Content from '../common/template/content'
@@ -48,9 +48,11 @@ class BillingCycle extends Component {
                             <Form onSubmit={this.props.create} />{/*Quando o formulario for submetido, será chamada a actionCreate create*/}
                         </TabContent>
                         <TabContent id='tabUpdate'>
-                            <Form />
+                            <Form onSubmit={this.props.update} />
                         </TabContent>
-                        <TabContent id='tabDelete'><h1>Excluir</h1></TabContent>
+                        <TabContent id='tabDelete'>
+                            <Form onSubmit={this.props.remove} readOnly={true} />
+                        </TabContent>
                     </TabsContent>
                 </Tabs>  
             </Content>
@@ -59,5 +61,5 @@ class BillingCycle extends Component {
    }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs, create}, dispatch) // Liga aos action creator deixando eles disponiveis no props do componente
+const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs, create, update, remove}, dispatch) // Liga aos action creator deixando eles disponiveis no props do componente
 export default connect(null, mapDispatchToProps)(BillingCycle) // Expota o componente e faz a conexão

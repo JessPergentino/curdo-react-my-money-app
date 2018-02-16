@@ -11,15 +11,15 @@ import {init} from './billingCycleActions'
 class BillingCycleForm extends Component{
     render() {
 
-        const {handleSubmit} = this.props // metodo do reduxform para processamento do formulario
+        const {handleSubmit, readOnly} = this.props // metodo do reduxform para processamento do formulario
         return (
             <form role='form' onSubmit={handleSubmit}>
                 <div className='box-body'>{/*Recebe como parametro a action que será disparada*/}
-                    <Field name='name' component={labelAndInput}
+                    <Field name='name' component={labelAndInput} readOnly={readOnly}
                         label='Nome' cols='12 4' placeholder='Informe o nome' />
-                    <Field name='month' component={labelAndInput} type='number' 
+                    <Field name='month' component={labelAndInput} type='number' readOnly={readOnly}
                         label='Mês' cols='12 4' placeholder='Informe o mês' />
-                    <Field name='year' component={labelAndInput} type='number' 
+                    <Field name='year' component={labelAndInput} type='number' readOnly={readOnly}
                         label='Ano' cols='12 4' placeholder='Informe o ano' />
                 </div>
 
