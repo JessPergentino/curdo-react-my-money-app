@@ -6,6 +6,7 @@ import {bindActionCreators} from 'redux'
 import {reduxForm, Field} from 'redux-form' // reduxForm: é uma função que funciona mais ou menos como o connect, ela serve como decoreator, liga o componente com o estado do redux - Field é uma tag que irá controlar os campos do formulario
 
 import labelAndInput from '../common/form/labelAndInput'
+import CreditList from './creditList'
 
 import {init} from './billingCycleActions'
 class BillingCycleForm extends Component{
@@ -21,6 +22,7 @@ class BillingCycleForm extends Component{
                         label='Mês' cols='12 4' placeholder='Informe o mês' />
                     <Field name='year' component={labelAndInput} type='number' readOnly={readOnly}
                         label='Ano' cols='12 4' placeholder='Informe o ano' />
+                    <CreditList cols='12 6'/>
                 </div>
 
                 <div className='box-footer' >
