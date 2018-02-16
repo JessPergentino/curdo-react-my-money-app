@@ -48,7 +48,7 @@ class BillingCycle extends Component {
                             <Form onSubmit={this.props.create} />{/*Quando o formulario for submetido, será chamada a actionCreate create*/}
                         </TabContent>
                         <TabContent id='tabUpdate'>
-                            <Form/>
+                            <Form />
                         </TabContent>
                         <TabContent id='tabDelete'><h1>Excluir</h1></TabContent>
                     </TabsContent>

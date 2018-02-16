@@ -27,4 +27,4 @@ class BillingCycleForm extends Component{
     }
 }
 
-export default reduxForm({form: 'billingCycleForm'})(BillingCycleForm) //Ligação com o estado do redux
+export default reduxForm({form: 'billingCycleForm', destroyOnUnmount: false})(BillingCycleForm) //Ligação com o estado do redux - o segundo parametro é para manter os dados do formulario mesmo que o componente tenha sido destruido na passagem de abas

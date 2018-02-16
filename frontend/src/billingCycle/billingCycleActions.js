@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 import {toastr} from 'react-redux-toastr'
-import {reset as resetForm} from 'redux-form' // action para resetar o formulario
+import {reset as resetForm, initialize} from 'redux-form' // action para resetar o formulario, action para inicializar p formulario com dados
 import { showTabs, selectTab} from '../common/tab/tabActions'
 import billingCycle from './billingCycle';
 
@@ -39,6 +39,8 @@ export function create(values) {
 export function showUpdate(billingCycle) {
     return [
         showTabs('tabUpdate'),
-        selectTab('tabUpdate')
+        selectTab('tabUpdate'),
+        initialize('billingCycleForm', billingCycle)
+
     ]
 }
