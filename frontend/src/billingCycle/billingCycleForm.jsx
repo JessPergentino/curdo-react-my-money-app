@@ -1,9 +1,13 @@
 // Componente de formulario
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+
 import {reduxForm, Field} from 'redux-form' // reduxForm: é uma função que funciona mais ou menos como o connect, ela serve como decoreator, liga o componente com o estado do redux - Field é uma tag que irá controlar os campos do formulario
 
 import labelAndInput from '../common/form/labelAndInput'
 
+import {init} from './billingCycleActions'
 class BillingCycleForm extends Component{
     render() {
 
@@ -21,10 +25,14 @@ class BillingCycleForm extends Component{
 
                 <div className='box-footer' >
                     <button type='submit' className='btn btn-primary' >Submit</button>
+                    <button type='button' className='btn btn-default' 
+                        onClick={this.props.init}>Cancelar</button>
                 </div>
             </form>
         )
     }
 }
 
-export default reduxForm({form: 'billingCycleForm', destroyOnUnmount: false})(BillingCycleForm) //Ligação com o estado do redux - o segundo parametro é para manter os dados do formulario mesmo que o componente tenha sido destruido na passagem de abas
+BillingCycleForm = reduxForm({form: 'billingCycleForm', destroyOnUnmount: false})(BillingCycleForm) //Ligação com o estado do redux - o segundo parametro é para manter os dados do formulario mesmo que o componente tenha sido destruido na passagem de abas - passa para uma variavel o resultado 
+const mapDispatchToProps = dispatch => bindActionCreators({init}, dispatch)
+export default connect(null,mapDispatchToProps) (BillingCycleForm)

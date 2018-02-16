@@ -7,6 +7,7 @@ import { showTabs, selectTab} from '../common/tab/tabActions'
 import billingCycle from './billingCycle';
 
 const BASE_URL = 'http://localhost:3003/api'
+const INITIAL_VALUES = {}
 
 export function getList() {
     const request = axios.get(`${BASE_URL}/billingCycles`)
@@ -21,13 +22,9 @@ export function create(values) {
     axios.post(`${BASE_URL}/billingCycles`, values)
         .then(resp => {
             toastr.success('Sucesso', 'Operação Realizada com sucesso.')
-            dispatch([ // o dispatch esta recebendo um array de actions
-                resetForm('billingCycleForm'),
-                getList(),
-                selectTab('tabList'),
-                showTabs('tabList', 'tabCreate')
-
-            ])
+            dispatch( // o dispatch esta recebendo um array de actions
+                init()    
+            )
         })
         .catch(e => {
             e.response.data.errors.forEach(error => toastr.error('Erro', error))
@@ -42,5 +39,14 @@ export function showUpdate(billingCycle) {
         selectTab('tabUpdate'),
         initialize('billingCycleForm', billingCycle)
 
+    ]
+}
+
+export function init() {
+    return [
+        showTabs('tabList', 'tabCreate'),
+        selectTab('tabList'),
+        getList(),
+        initialize('billingCycleForm', INITIAL_VALUES)
     ]
 }
