@@ -4,6 +4,7 @@ import axios from 'axios'
 import {toastr} from 'react-redux-toastr'
 import {reset as resetForm} from 'redux-form' // action para resetar o formulario
 import { showTabs, selectTab} from '../common/tab/tabActions'
+import billingCycle from './billingCycle';
 
 const BASE_URL = 'http://localhost:3003/api'
 
@@ -33,4 +34,11 @@ export function create(values) {
         })
 
    }
+}
+
+export function showUpdate(billingCycle) {
+    return [
+        showTabs('tabUpdate'),
+        selectTab('tabUpdate')
+    ]
 }
