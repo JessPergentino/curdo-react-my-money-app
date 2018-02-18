@@ -11,9 +11,7 @@ import TabsContent from '../common/tab/tabsContent'
 import TabHeader from '../common/tab/tabHeader'
 import TabContent from '../common/tab/tabContent'
 
-import {selectTab, showTabs} from '../common/tab/tabActions'
-
-import {create, update, remove} from './billingCycleActions'
+import {init,create, update, remove} from './billingCycleActions'
 
 import ContentHeader from '../common/template/contentHeader'
 import Content from '../common/template/content'
@@ -24,8 +22,7 @@ import Form from './billingCycleForm'
 class BillingCycle extends Component {
    
     componentWillMount() { //Metodo que sempre é chamado quando o componente é renderizado
-        this.props.selectTab('tabList') // A partir das propiedades dispara o action creator - Faz com que a aba de listar seja selecionada por padrão sempre que o componente for renderizado na primeira vez ou com um refresh
-        this.props.showTabs('tabList', 'tabCreate')
+       this.props.init()
     }
    
     render() {
@@ -64,5 +61,5 @@ class BillingCycle extends Component {
    }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs, create, update, remove}, dispatch) // Liga aos action creator deixando eles disponiveis no props do componente
+const mapDispatchToProps = dispatch => bindActionCreators({init, create, update, remove}, dispatch) // Liga aos action creator deixando eles disponiveis no props do componente
 export default connect(null, mapDispatchToProps)(BillingCycle) // Expota o componente e faz a conexão
