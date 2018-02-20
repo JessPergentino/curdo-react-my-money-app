@@ -46,8 +46,8 @@ const validateToken = (req, res, next) => {
     })
 }
 
-// metodo de sigup
-const sigup = (req, res, next) => {
+// metodo de signup
+const signup = (req, res, next) => {
 // conjunto de dados recebido do formulario de criação do usuario
     const name = req.body.name || ''
     const email = req.body.email || ''
@@ -80,7 +80,7 @@ const sigup = (req, res, next) => {
         if(err) { // se houver um erro retorna o erro
             return sendErrorsFromDB(res, err)
         } else if (user) { // se encontrsr o usuário
-            return resizeBy.status(400).send({errors: ['Usuário já cadastrado.']}) // retorna a resposta de que já existe esse usuario
+            return res.status(400).send({errors: ['Usuário já cadastrado.']}) // retorna a resposta de que já existe esse usuario
         } else { // caso não ache nenhum usuario, ai sim cadastra o usuario 
             const newUser = new User({name, email, password: passwordHash}) // cria uma constate para o novo usuario, com nome, email e o hash da senha
             newUser.save(err => {
@@ -94,4 +94,4 @@ const sigup = (req, res, next) => {
     })
 }
 
-module.exports = { login, sigup, validateToken} // exporta somente esses metodos
+module.exports = { login, signup, validateToken} // exporta somente esses metodos

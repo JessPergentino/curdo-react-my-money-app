@@ -3,7 +3,7 @@
 const express = require('express') //referencia para o express
 const auth = require('./auth')
 
-module.exports = function(server) { // mesmo server do outro modulo
+module.exports = function (server) { // mesmo server do outro modulo
     // Rotas protegidas
     const protectedApi = express.Router() // define o protectedApi apartir do router
     server.use('/api', protectedApi) // coloca o protectedApi dentro do servidor - todo mundo que tiver /api irá cair dentro do protectedApi
@@ -19,6 +19,6 @@ module.exports = function(server) { // mesmo server do outro modulo
 
     const AuthService = require('../api/user/AuthService')
     openApi.post('/login', AuthService.login)
-    openApi.post('/sigup', AuthService.sigup)
+    openApi.post('/signup', AuthService.signup)
     openApi.post('/validateToken', AuthService.validateToken)
 }
