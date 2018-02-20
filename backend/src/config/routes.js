@@ -1,15 +1,24 @@
 // Configuração das rotas
 
 const express = require('express') //referencia para o express
+const auth = require('./auth')
 
 module.exports = function(server) { // mesmo server do outro modulo
+    // Rotas protegidas
+    const protectedApi = express.Router() // define o protectedApi apartir do router
+    server.use('/api', protectedApi) // coloca o protectedApi dentro do servidor - todo mundo que tiver /api irá cair dentro do protectedApi
 
-    //Definir URL base para todas as rotas
-    const router = express.Router()
-    server.use('/api', router)
+    protectedApi.use(auth) // aplica o filtro de autenticação
 
-    //Rotas de Ciclo de Pagamento
     const BillingCycle = require('../api/billingCycle/billingCycleService')
-    BillingCycle.register(router, '/billingCycles') // registra os webservices no billingCycles - get, post, put, delete...
+    BillingCycle.register(protectedApi, '/billingCycles') // rota adicionada ao protectedApi
 
+    // Rotas publicas
+    const openApi = express.Router()
+    server.use('/oapi', openApi)
+
+    const AuthService = require('../api/user/AuthService')
+    openApi.post('/login', AuthService.login)
+    openApi.post('/sigup', AuthService.sigup)
+    openApi.post('/validateToken', AuthService.validateToken)
 }
