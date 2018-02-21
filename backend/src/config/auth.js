@@ -21,7 +21,7 @@ module.exports = (req, res, next) => {
                     errors: ['Failed to authenticate token'] // é passada a mensagem de erro
                 })
             } else { // se não houver erro
-                req.decoded = decoded // o decoded é passado para o request
+                //req.decoded = decoded // o decoded é passado para o request
                 next() // é dada a continuidade indo para o proximo middleware
             }
         })

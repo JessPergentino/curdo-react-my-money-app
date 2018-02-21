@@ -11,7 +11,7 @@ const passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/ // E
 
 // metodo para tratamento de erros do banco de dados
 const sendErrorsFromDB = (res, dbErrors) => {
-    const errors =[] // array vazio que ira receber os errros
+    const errors = [] // array vazio que ira receber os errros
     _.forIn(dbErrors.errors, error => errors.push(error.message)) // varredura dos erros
     return res.status(400).json({errors}) // retorna os erros
 }
