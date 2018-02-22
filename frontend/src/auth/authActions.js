@@ -23,7 +23,7 @@ function submit(values, url) { // metodo para submeter os formularios de altenti
                 ])
             })
             .catch(e => { // caso haja erro
-                e.respose.data.forEach( // será feito um foreach pelos erros
+                e.response.data.errors.forEach( // será feito um foreach pelos erros
                     error => toastr.error('Erro', error) // e será mostrado a mensagem de erro
                 )
             })

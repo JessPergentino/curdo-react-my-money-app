@@ -1,47 +1,47 @@
 // componente da barra de navegação que contera o dropbox de logout
 
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
-import {logout} from '../../auth/authActions'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { logout } from '../../auth/authActions'
 
 class Navbar extends Component {
     constructor(props) {
         super(props)
-        this.state = {open: false}//Estado referente a aba do botao estar aberta ou fechada
+        this.state = { open: false }//Estado referente a aba do botao estar aberta ou fechada
     }
 
     changeOpen() {
-        this.setState({open: !this.state.open}) // metodo referente a mudança de estado
+        this.setState({ open: !this.state.open }) // metodo referente a mudança de estado
     }
 
     render() {
-        const {name, email} = this.props.user // extrai o nome e o email do usuario
+        const { name, email } = this.props.user // extrai o nome e o email do usuario
         return (
             // Estrutura do template
             <div className="navbar-custom-menu" >
                 <ul className="nav navbar-nav" >
-                    <li onMouseLeave={() => this.changeOpen()} 
-                        className={`dropdown user user-menu ${this.state.open ? 'open' : 
-                    ''}`} >
+                    <li onMouseLeave={() => this.changeOpen()}
+                        className={`dropdown user user-menu ${this.state.open ? 'open' :
+                            ''}`} >
                         <a href="javascript:;" onClick={() => this.changeOpen()}
-                        aria-expanded={this.state.open ? 'true' : 'false'}
-                        className="dropdown-toggle"
-                        data-toggle="dropdown" >
-                        <img src="http://lorempixel.com/160/160/abstract" 
-                        className="user-image" alt="User Image"/>
-                        <span className="hidden-xs">{name}</span>
+                            aria-expanded={this.state.open ? 'true' : 'false'}
+                            className="dropdown-toggle"
+                            data-toggle="dropdown" >
+                            <img src="http://lorempixel.com/160/160/abstract"
+                                className="user-image" alt="User Image" />
+                            <span className="hidden-xs">{name}</span>
                         </a>
                         <ul className="dropdown-menu" >
                             <li className="user-header" >
-                                <img src="http://lorempixel.com/160/160/abstract" 
-                                className="img-circle" alt="User Image"/>
+                                <img src="http://lorempixel.com/160/160/abstract"
+                                    className="img-circle" alt="User Image" />
                                 <p>{name}<small>{email}</small></p>
                             </li>
                             <li className="user-footer" >
                                 <div className="pull-right" >
-                                    <a href="#" onClick={this.props.logout} 
-                                    className="btn btn-default btn-flat" >Sair</a>
+                                    <a href="#" onClick={this.props.logout}
+                                        className="btn btn-default btn-flat" >Sair</a>
                                 </div>
                             </li>
                         </ul>
@@ -52,6 +52,6 @@ class Navbar extends Component {
     }
 }
 
-const mapStateToProps = state => ({user: state.auth.user}) // mapeamento do usuario gerenciado pelo reducer
-const mapDispatchToProps = dispatch => bindActionCreators({logout}, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps) (Navbar)
+const mapStateToProps = state => ({ user: state.auth.user }) // mapeamento do usuario gerenciado pelo reducer
+const mapDispatchToProps = dispatch => bindActionCreators({ logout }, dispatch)
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
