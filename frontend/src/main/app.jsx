@@ -1,5 +1,4 @@
 // component funcional do react - baseando em função - irá conter todos os componentes da aplicação
-import '../common/template/dependencies' //referencia para as dependencias
 import React from 'react' //referencia para o react
 
 import Header from '../common/template/header'
@@ -14,7 +13,7 @@ export default props => (
         <Header/>
         <SideBar/>
         <div className='content-wrapper' >
-            <Routes />
+           {props.children}
         </div>
         <Footer/>
         <Messages />
