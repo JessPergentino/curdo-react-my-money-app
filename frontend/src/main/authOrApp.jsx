@@ -21,10 +21,10 @@ class AuthOrApp extends Component {
     render() {
         const { user, validToken } = this.props.auth // pegar o user e o validToken
 
-        if (user && validateToken) { // se tiver usuario e o token tiver valido
+        if (user && validToken) { // se tiver usuario e o token tiver valido
             axios.defaults.headers.common['authorization'] = user.token // o token sera adicionado ao headers da aplicação - o token é passado em todas as requisições
             return <App>{this.props.children}</App> // retorna o app
-        } else if (!user && !validateToken) { // se op usuario não existir e o token for invalido
+        } else if (!user && !validToken) { // se op usuario não existir e o token for invalido
             return <Auth /> // retorna o auth
         } else { // usuario existe, mas o token é invalido
             return false // retorna false e não renderiza nada, esperando cair em um dos casos
